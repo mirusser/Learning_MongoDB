@@ -1,0 +1,19 @@
+
+1. Connecting to Altas cluster: mongodb+srv://user:password@clusterURI.mongodb.net/database
+
+2. Exports data in BSON: 
+    mongodump --uri "<Atlas Cluster URI>"
+
+3. Exports data in JSON: 
+    mongoexport --uri "<Atlas Cluster URI>"
+                -- collection=<collection name>
+                --out=<filename>.json
+
+4. Import data in BSON:
+    mongorestore --uri "<Atlas Cluster URI>"
+                 --drop dump
+
+5. Import data in JSON:
+    mongoimport --uri "<Atlas Cluster URI>"
+                --drop=<filename>.json
+
