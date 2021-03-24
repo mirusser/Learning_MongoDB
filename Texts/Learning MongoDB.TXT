@@ -6,7 +6,7 @@
 
 3. Exports data in JSON: 
     mongoexport --uri "<Atlas Cluster URI>"
-                -- collection=<collection name>
+                --collection=<collection name>
                 --out=<filename>.json
 
 4. Import data in BSON:
@@ -17,3 +17,8 @@
     mongoimport --uri "<Atlas Cluster URI>"
                 --drop=<filename>.json
 
+6. Quering/filtering documents:
+    {"field": "value"}
+    for example: 
+        {"state": "NY", "city": "ALBANY"}
+        {"start station name" :"Howard St & Centre St", "birth year": 1961}

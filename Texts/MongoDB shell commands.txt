@@ -1,0 +1,26 @@
+
+1. Connect to database:
+    mongo "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/databaseName"
+
+2. Check to which database you are connected:
+    db
+
+3. Show available databases:
+    show dbs
+
+4. Change database:
+    use databaseName
+
+5. Show collections:
+    show collections
+
+6. How to use queries/find:
+    db.zips.find({"field": "value"})
+    for example: db.zips.find({"state": "NY"})
+
+7. To see more readable result:
+    db.zips.find({"field": "value"}).pretty()
+
+8. How many documents in collection:
+    db.zips.find({"field": "value"}).count()
+
