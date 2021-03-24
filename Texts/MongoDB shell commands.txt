@@ -1,5 +1,5 @@
 
-1. Connect to database:
+1. Connect to database (type/paste in powershell or any onter command line):
     mongo "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/databaseName"
 
 2. Check to which database you are connected:
@@ -23,4 +23,9 @@
 
 8. How many documents in collection:
     db.zips.find({"field": "value"}).count()
+
+9. Iterate through the cursor result (how to see more results):
+    it
+
+
 
