@@ -1,0 +1,10 @@
+
+1. Every document must have a unique _id value 
+    (by default of type 'ObjectId' but can be of other type)
+    (the rest of fields and values are not required)
+
+2. In collection every document can be diffrent (can have diffrent fields and values), 
+but still it must have a unique _id value
+    - that is not a good way to organize your data obviously
+
+
