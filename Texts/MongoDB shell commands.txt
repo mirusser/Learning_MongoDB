@@ -52,3 +52,19 @@
     The moment that there is an error in inserting this way (in most cases duplicate error) the inserting continues, and only the documents
     that are causing errors are omitted.
     
+ 14. Updating many documents:
+    db.collectionName.updateMany({"field_to_query": "value"}, {"$inc": {"field_to_update": value, "field_to_update_2": value, ...}})
+    for example: db.zips.updateMany({"city": "HUDSON"}, {"$inc": {"pop": 10}})
+
+    "$inc" increments the value of the field by given amount
+
+15. Update one document:
+    db.collectionName.updateOne({"field_to_query": "value"}, { "$set": {"field_to_update": value}})
+    for example: 
+        db.zips.updateOne({"zip": "77003"}, { "$set": {"pop": 17630}})
+        db.grades.updateOne(
+            { "student_id": 250, "class_id": 339 },
+            {"$push": { "scores": { "type": "extra credit", score": 100 }}})
+
+    "$set" set the chosen field to given value, if the field doesn't exists, the field is added to the document
+    "$push" adds an element to an array field
