@@ -68,3 +68,15 @@
 
     "$set" set the chosen field to given value, if the field doesn't exists, the field is added to the document
     "$push" adds an element to an array field
+
+16. Delete many documents:
+    db.collectionName.deleteMany({ "field_to_query": value })   
+    for example: db.inspections.deleteMany({ "test": 1 })   
+
+17. Delete one document:
+    db.collectionName.deleteOne({ "field_to_query": value })
+    for example: db.inspections.deleteOne({ "test": 3 })
+
+18. Delete (drop) whole collection:
+    db.collectionName.drop()
+    for example: db.inspection.drop()
