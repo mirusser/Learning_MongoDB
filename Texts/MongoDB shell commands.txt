@@ -31,7 +31,7 @@
     db.collectionName.findOne()
     for example: db.inspections.findOne()
 
-11. Insert a ducment into a collection:
+11. Insert a document into a collection:
     db.collectionName.insert({
         "_id" : ObjectId("56d61033a378eccde8a8354f"),
         "field" : "value",
