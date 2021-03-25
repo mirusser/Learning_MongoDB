@@ -27,5 +27,28 @@
 9. Iterate through the cursor result (how to see more results):
     it
 
+10. Get a random document from a collection:
+    db.collectionName.findOne()
+    for example: db.inspections.findOne()
 
+11. Insert a ducment into a collection:
+    db.collectionName.insert({
+        "_id" : ObjectId("56d61033a378eccde8a8354f"),
+        "field" : "value",
+        ...
+        }
+    })
 
+12. Inserting multiple documents at one time:
+    db.collectionName.insert([{"field": value}, {"field": value}, {"field": value} ])
+    for example db.inspections.insert([{"test" : 1 }, {"test" : 2 }, {"test" : 3 }])
+
+    The moment that there is an error in inserting this way (in most cases duplicate error) the inserting function stops, and
+    the remaining documents are not inserted.
+
+13. Insert multiple documents not in order that they are listed:
+    db.inspections.insert([{ "_id": 1, "test": 1 },{ "_id": 1, "test": 2 }, { "_id": 3, "test": 3 }], { "ordered": false })
+
+    The moment that there is an error in inserting this way (in most cases duplicate error) the inserting continues, and only the documents
+    that are causing errors are omitted.
+    
