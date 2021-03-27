@@ -7,15 +7,24 @@
 but still it must have a unique _id value
     - that is not a good way to organize your data obviously
 
-
 3. Update operators
 Enable us to modify date in the database
-Exampla: $inc, $set, $unset
+Example: $inc, $set, $unset
 
 4. Query operators
 Provide additional ways to locate data within the database
 
-5. Comparison operators
+5. Quering/filtering documents:
+    {"field": "value"}
+    for example: 
+        {"state": "NY", "city": "ALBANY"}
+        {"start station name" :"Howard St & Centre St", "birth year": 1961}
+
+6. Quering using array operators
+    {array_field: {"$size": number, "$all": ["value_in_array"]}}
+    for example: {"amenities": {"$size": 20, "$all": ["Shampoo"]}}
+
+7. Comparison operators
 - '$eq' = equal to
 - '$ne' != not equal to
 - '$gt' > greater than
@@ -30,7 +39,7 @@ For example:
     (returns the documents which tripduration was less than or equal to 70 (seconds) and usertype is not equal to "Subscriber")
     {pop: { $gt: 5000, $lt: 1000000}}
 
-6. Logic operators:
+8. Logic operators:
 - "$and" match all of the specified query clauses
 - "$or" at least one of the query clauses is matched
 - "$nor" fail to match both or more of given clauses (the result are the documents that dont match the clauses)
@@ -43,7 +52,7 @@ $and $or $nor syntax:
 $not sytnax:
     {$not: {statement}}
 
-7. Expressive '$expr' operator allows to use of aggregation expressions within the query language
+9. Expressive '$expr' operator allows to use of aggregation expressions within the query language
     {$expr: {expression}}
 
 $expr allows us to use variables and conditional statements
@@ -55,3 +64,36 @@ $expr allows us to use variables and conditional statements
             ]
         }
     }
+
+10. Array operators
+    '$push' 
+        - allows us to add an element to an array
+        - turns a field into an array field if it was previously a different type
+
+11. $elemMatch  
+    Matches documents that contain an array field with at least one element that matches the specified query criteria
+    or
+    Projects only the array elements with at least one element that matches the specified criteria    
+
+    for example: { "offices": { "$elemMatch": { "city": { "$eq": "Seattle" } } }}
+
+12. Array operators and sub-documents
+
+    How to filter by subFields:
+    {"field.subfield": "value_of_subfield"}
+    
+    for example:  
+    {"start station location.type": "Point"}
+
+    How to filer by field that is an array that may contains objects
+
+    {"field_that_is_an_array.array_index.object_field.field_in_object": "value"}
+    
+    for example: 
+    {"relationships.0.person.last_name": "Zuckerberg"}
+        
+        relationships - field that is an array in a document
+        0 - position of the array element
+        person - field with a nested object as a value
+        last_name - field within the 'person' sub-document
+        Zuckerberg - value that we are looking for

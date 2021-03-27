@@ -17,11 +17,6 @@
     mongoimport --uri "<Atlas Cluster URI>"
                 --drop=<filename>.json
 
-6. Quering/filtering documents:
-    {"field": "value"}
-    for example: 
-        {"state": "NY", "city": "ALBANY"}
-        {"start station name" :"Howard St & Centre St", "birth year": 1961}
 
 
 

@@ -90,3 +90,27 @@
             { "$or" :[ { "dst_airport": "KZN" }, { "src_airport": "KZN" }] },
             { "$or" :[ { "airplane": "CR2" }, { "airplane": "A81" } ] }
             ] }).pretty()
+
+21. Projection (displaying only given fields)
+    db.collectionName.find({<query>}, {<projection>})
+    
+    for example: 
+        db.listingsAndReviews.find(
+            { "amenities": "Wifi" },
+            { "price": 1, "address": 1, "_id": 1 })
+            .pretty()
+    
+    1 - include the field
+    0 - exclude the field
+    Use only 1s or only 0s
+
+    another example with array operator:
+        db.grades.find(
+            { "class_id": 431 },
+            { "scores": { "$elemMatch": { "score": { "$gt": 85 } } }})
+            .pretty()
+
+22. $elemMatch  
+    Matches documents that contain an array field with at least one element that matches the specified query criteria
+    or
+    Projects only the array elements with at least one element that matches the specified criteria
