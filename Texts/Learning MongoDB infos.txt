@@ -8,3 +8,50 @@ but still it must have a unique _id value
     - that is not a good way to organize your data obviously
 
 
+3. Update operators
+Enable us to modify date in the database
+Exampla: $inc, $set, $unset
+
+4. Query operators
+Provide additional ways to locate data within the database
+
+5. Comparison operators
+- '$eq' = equal to
+- '$ne' != not equal to
+- '$gt' > greater than
+- '$lt' < less than
+- '$gte' >= greater than or equal to
+- '$lte' <= less than or equal to
+
+How to use:
+    {field: {operator: value}}
+For example:
+    {"tripduration": {"$lte": 70 }, "usertype": {"$ne": "Subscriber"}}
+    (returns the documents which tripduration was less than or equal to 70 (seconds) and usertype is not equal to "Subscriber")
+    {pop: { $gt: 5000, $lt: 1000000}}
+
+6. Logic operators:
+- "$and" match all of the specified query clauses
+- "$or" at least one of the query clauses is matched
+- "$nor" fail to match both or more of given clauses (the result are the documents that dont match the clauses)
+- "$not" negates the quety requirement
+
+$and $or $nor syntax:
+    {operator: [{statement1}, {statement2}, ...]}
+    for example:
+        {$nor: [{result: "No Violation Issued"}, {result: "Violation Issued"}]}
+$not sytnax:
+    {$not: {statement}}
+
+7. Expressive '$expr' operator allows to use of aggregation expressions within the query language
+    {$expr: {expression}}
+
+$expr allows us to use variables and conditional statements
+    for example: {"$expr": {"$eq": ["$start station id", "$end station id"]}}
+    { "$expr": { 
+        "$and": [ 
+            { "$gt": [ "$tripduration", 1200 ]},
+            { "$eq": [ "$end station id", "$start station id" ]}
+            ]
+        }
+    }

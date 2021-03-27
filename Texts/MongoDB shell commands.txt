@@ -80,3 +80,13 @@
 18. Delete (drop) whole collection:
     db.collectionName.drop()
     for example: db.inspection.drop()
+
+19. Comparison operators example:
+    db.trips.find({"tripduration": {"$lte": 70 }, "usertype": {"$ne": "Subscriber"}}).pretty()
+
+20. Using logic operators in shell:
+    db.routes.find({ 
+        "$and": [ 
+            { "$or" :[ { "dst_airport": "KZN" }, { "src_airport": "KZN" }] },
+            { "$or" :[ { "airplane": "CR2" }, { "airplane": "A81" } ] }
+            ] }).pretty()
